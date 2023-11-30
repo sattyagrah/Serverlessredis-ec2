@@ -82,10 +82,10 @@ Outputs:
     Description: Public IP address of the newly created EC2 instance
     Value: !GetAtt Ec2Instance.PublicIp
 
-  ClusterEndpoint:
-    Description: Cluster endpoint of the newly created Redis serverless cluster.
-    Value: !GetAtt RedisServerless.Endpoint
+  # ClusterEndpoint:
+  #   Description: Cluster endpoint of the newly created Redis serverless cluster.
+  #   Value: !GetAtt RedisServerless.Endpoint
   
-  ReaderEndpoint:
-    Description: Reader endpoint of newly created serverless cluster.
-    Value: !GetAtt [ RedisServerless, ReaderEndpoint ]
+  # ReaderEndpoint:
+  #   Description: Reader endpoint of newly created serverless cluster.
+  #   Value: !GetAtt [ RedisServerless, ReaderEndpoint ]
