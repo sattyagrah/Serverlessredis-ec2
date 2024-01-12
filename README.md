@@ -16,7 +16,7 @@ This template can be used to create an ElastiCache Redis (Serverless) cluster wi
 
 3. After creating the stack [connect to Ec2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html#connect-linux-inst-sshClient) and run the command -
     ```sh 
-    sudo /home/ec2-user/.redis.sh
+    sudo /home/ec2-user/redis.sh
     ```
 
 4. You will be connected to the Redis serverless cluster.
