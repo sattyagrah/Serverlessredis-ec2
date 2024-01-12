@@ -46,6 +46,9 @@ Resources:
           #!/bin/bash -xe
           sudo dnf install -y redis6.x86_64
           sudo systemctl start redis6
+          cd /home/ec2-user
+          echo "redis6-cli -h $(aws elasticache describe-serverless-caches --query 'ServerlessCaches[].Endpoint.Address' --output text) --tls -p 6379" >> redis.sh
+          chmod u+x redis.sh
       Tags:
         - Key: 'Name'
         Value: 'Ec2InstanceForRedis'
@@ -57,7 +60,6 @@ Resources:
     Properties:
       Description: 'Creating a serverless redis cluster'
       Engine: 'redis'
-      # SecurityGroupIds: !Ref SecurityGroupName
       SecurityGroupIds: [!Ref 'SecurityGroupID']
       ServerlessCacheName: 'RedisServerless'
       SubnetIds: !Ref 'SubnetId'
@@ -69,23 +71,7 @@ Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
     Value: !Ref 'Ec2Instance'
-  
-  AZ:
-    Description: Availability Zone of the newly created EC2 instance
-    Value: !GetAtt [ Ec2Instance, AvailabilityZone ]
-  
-  PublicDNS:
-    Description: Public DNSName of the newly created EC2 instance
-    Value: !GetAtt [Ec2Instance, PublicDnsName]
-  
-  PublicIP:
-    Description: Public IP address of the newly created EC2 instance
-    Value: !GetAtt Ec2Instance.PublicIp
 
-  # ClusterEndpoint:
-  #   Description: Cluster endpoint of the newly created Redis serverless cluster.
-  #   Value: !GetAtt RedisServerless.Endpoint
-  
-  # ReaderEndpoint:
-  #   Description: Reader endpoint of newly created serverless cluster.
-  #   Value: !GetAtt [ RedisServerless, ReaderEndpoint ]
+  ClusterEndpoint:
+    Description: Cluster endpoint of the newly created Redis serverless cluster.
+    Value: !GetAtt RedisServerless.Endpoint.Address
