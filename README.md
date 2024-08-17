@@ -7,10 +7,10 @@ This is a Repository that contains YAML CloudFormation template to create an Ela
 
 This template can be used to create an ElastiCache Redis (Serverless) cluster with an Amazon Linux 2023 EC2 instance and connect to the Redis cluster.
 
-1. Download the template to your local machine from github repository.
+1. Download the template to your local machine from GitHub repository.
 
     ```sh
-    wget https://raw.githubusercontent.com/mrsatya21/Serverlessredis-ec2/main/serverless-redis-ec2.yaml
+    wget https://raw.githubusercontent.com/sattyagrah/Serverlessredis-ec2/main/serverless-redis-ec2.yaml
     ```
 2. Use the template to [create the Stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) through AWS Console. 
 
